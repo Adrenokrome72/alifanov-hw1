@@ -89,17 +89,17 @@ class Reviewer(Mentor):
         return result        
 
 
-lecturer_1 = Lecturer('Oleg', 'Sidorov')
-lecturer_1.courses_attached = ['Python', 'Java']
-lecturer_1.grades = {'Python': [7, 9, 9, 10], 'Java': [7, 8, 9, 10]}
+lecturer_1 = Lecturer('Ivan', 'Petrov')
+lecturer_1.courses_attached = ['Python', 'Git']
+lecturer_1.grades = {'Python': [7, 9, 9, 10], 'Git': [7, 8, 9, 10]}
     
-lecturer_2 = Lecturer('Zina', 'Soboleva')
-lecturer_2.courses_attached = ['Python', 'Java']
-lecturer_2.grades = {'Python': [6, 6, 9, 10], 'Java': [7, 8, 9, 10]}
+lecturer_2 = Lecturer('Sergey', 'Smirnov')
+lecturer_2.courses_attached = ['Python', 'Git']
+lecturer_2.grades = {'Python': [6, 6, 9, 10], 'Git': [7, 8, 9, 10]}
     
-lecturer_3 = Lecturer('Zina', 'Soboleva')
-lecturer_3.courses_attached = ['Python', 'Java']
-lecturer_3.grades = {'Java': [9, 9, 9, 10]}
+lecturer_3 = Lecturer('Roman', 'Vasin')
+lecturer_3.courses_attached = ['Python', 'Git']
+lecturer_3.grades = {'Python': [9, 9, 9, 10],'Git': [9, 9, 9, 10]}
 
 list_lecturer = [lecturer_1, lecturer_2, lecturer_3]
 
@@ -116,7 +116,9 @@ def average_grades_lecturers(list_lecturer, courses):
         else:
             continue
     return summary_grades / number_grades
-print(average_grades_lecturers(list_lecturer, 'Java'))
+
+#проверка работы метода:
+#print(average_grades_lecturers(list_lecturer, 'Java'))
 
     # Проверка методов
 #print(oleg_lec.average_grades())
@@ -126,8 +128,22 @@ print(average_grades_lecturers(list_lecturer, 'Java'))
 #print(oleg_lec < zina_lec)
 
 
+student_1 = Student('Ivan', 'Ivanov', 'men')
+student_1.courses_in_progress = ['Python', 'Git']
+student_1.finished_courses = ['List', 'Dict']
+student_1.grades = {'Python': [7, 8, 9, 9], 'Git': [7, 8, 9, 9]}
 
-#list_student = [ivan_st, rita_st, ritaa_st]
+student_2 = Student('Rita', 'Petrova', 'women')
+student_2.courses_in_progress = ['Python', 'Git']
+student_2.finished_courses = ['List', 'Dict']
+student_2.grades = {'Python': [7, 8, 9, 9], 'Git': [7, 8, 9, 9]}
+
+student_3 = Student('Rita', 'Petrova', 'women')
+student_3.courses_in_progress = ['Python', 'Git']
+student_3.finished_courses = ['List', 'Dict']
+student_3.grades = {'Python': [7, 8, 9, 9]}
+
+list_student = [student_1, student_2, student_3]
 
 def average_grades_students(list_student, courses):
     summary_grades = 0
@@ -143,3 +159,14 @@ def average_grades_students(list_student, courses):
             continue
     return sum_grades / number_grades
 #print(average_grades_students(list_student, 'Git'))
+
+
+alex_rev = Reviewer('Alex', 'Vetrov')
+alex_rev.courses_attached = ['Python']
+
+victor_rev = Reviewer('Victor', 'Ladov')
+victor_rev.courses_attached = ['Git']
+
+st_ruoy = Student('Ruoy', 'Eman', 'm')
+st_ruoy.courses_in_progress += ['Python']
+st_ruoy.courses_in_progress += ['Git']
