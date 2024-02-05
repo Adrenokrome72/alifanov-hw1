@@ -28,7 +28,7 @@ class Student:
     
     #перегрузка класса student           
     def __str__(self):
-        result = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {average_grades()}\nКурсы в процессе изучения{", ".join(self.courses_in_progress)}\nЗаверешенные курсы: {", ".join(self.finished_courses)}' 
+        result = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {self.average_grades()}\nКурсы в процессе изучения{", ".join(self.courses_in_progress)}\nЗаверешенные курсы: {", ".join(self.finished_courses)}' 
         return result
     
     #метод выбора студента, относящегося к курсу
@@ -50,7 +50,7 @@ class Lecturer(Mentor):
         self.grades = {}
 
     #функция для подсчета средней оценки за лекции всех лекторов в рамках курса
-    def average_grades():
+    def average_grades(self):
         sum_grades = 0
         len_grades = 0
         for list_grades in self.grades.values():
@@ -128,22 +128,22 @@ def average_grades_lecturers(list_lecturer, courses):
 #print(oleg_lec < zina_lec)
 
 
-student_1 = Student('Ivan', 'Ivanov', 'men')
+student_1 = Student('Ivan', 'Ivanov', 'male')
 student_1.courses_in_progress = ['Python', 'Git']
 student_1.finished_courses = ['List', 'Dict']
 student_1.grades = {'Python': [7, 8, 9, 9], 'Git': [7, 8, 9, 9]}
 
-student_2 = Student('Rita', 'Petrova', 'women')
+student_2 = Student('Rita', 'Petrova', 'female')
 student_2.courses_in_progress = ['Python', 'Git']
 student_2.finished_courses = ['List', 'Dict']
 student_2.grades = {'Python': [7, 8, 9, 9], 'Git': [7, 8, 9, 9]}
 
-student_3 = Student('Rita', 'Petrova', 'women')
-student_3.courses_in_progress = ['Python', 'Git']
-student_3.finished_courses = ['List', 'Dict']
-student_3.grades = {'Python': [7, 8, 9, 9]}
+student_ruoy = Student('Ruoy', 'Eman', 'male')
+student_ruoy.courses_in_progress = ['Python', 'Git']
+student_ruoy.finished_courses = ['Введение в программирование']
+student_ruoy.grades = {'Python': [7, 8, 9, 9], 'Git': [7, 8, 9, 8]}
 
-list_student = [student_1, student_2, student_3]
+list_student = [student_1, student_2, student_ruoy]
 
 def average_grades_students(list_student, courses):
     summary_grades = 0
@@ -157,16 +157,24 @@ def average_grades_students(list_student, courses):
             number_grades += len_grades
         else:
             continue
-    return sum_grades / number_grades
+    return summary_grades / number_grades
 #print(average_grades_students(list_student, 'Git'))
 
 
-alex_rev = Reviewer('Alex', 'Vetrov')
-alex_rev.courses_attached = ['Python']
+reviewer_1 = Reviewer('Alex', 'Vetrov')
+reviewer_1.courses_attached = ['Python']
 
-victor_rev = Reviewer('Victor', 'Ladov')
-victor_rev.courses_attached = ['Git']
+reviewer_2 = Reviewer('Victor', 'Ladov')
+reviewer_2.courses_attached = ['Git']
 
-st_ruoy = Student('Ruoy', 'Eman', 'm')
-st_ruoy.courses_in_progress += ['Python']
-st_ruoy.courses_in_progress += ['Git']
+
+#print(reviewer_1)
+
+#print(lecturer_1)
+#print(lecturer_2)
+#print(lecturer_3)
+
+
+#print(student_1)
+#print(student_2)
+print(student_ruoy)
