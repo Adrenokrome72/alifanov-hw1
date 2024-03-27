@@ -1,35 +1,48 @@
 CREATE TABLE Genre(
-    GenreID INT PRIMARY KEY,
-    TrackID INT FOREIGN KEY,
-  	Genre_name VARCHAR(255)
+    GenreID SERIAL PRIMARY KEY REFERENCES Artists(GenreID),
+    TrackID SERIAL,
+  	Genre_name VARCHAR(50) NOT NULL
 )
 
 CREATE TABLE Artist(
-    ArtistID INT PRIMARY KEY,
-    GenreID INT FOREIGN KEY,
-  	Artist_name VARCHAR(255),
-  	Artist_genre VARCHAR(255)
+    ArtistID SERIAL PRIMARY KEY,
+    GenreID SERIAL,
+  	Artist_name VARCHAR(50) NOT NULL,
+  	Artist_genre VARCHAR(50) NOT NULL
 )
 
 CREATE TABLE Album(
-    AlbumID INT PRIMARY KEY,
-    ArtistID INT FOREIGN KEY,
-  	Album_name VARCHAR(255),
-  	Release_year VARCHAR(255)
+    AlbumID SERIAL PRIMARY KEY,
+    ArtistID SERIAL,
+  	Album_name VARCHAR(50) NOT NULL,
+  	Release_year DATE NOT NULL
 )
 
 CREATE TABLE Track(
-    TrackID INT PRIMARY KEY,
-    AlbumID INT FOREIGN KEY,
-  	Track_name VARCHAR(255),
-  	Track_time VARCHAR(255),
-  	Track_album VARCHAR(255)
+    TrackID SERIAL PRIMARY KEY,
+    AlbumID SERIAL,
+  	Track_name VARCHAR(50) NOT NULL,
+  	Track_time NUMERIC(10, 10) NOT NULL,
+  	Track_album VARCHAR(50) NOT NULL
 )
 
 CREATE TABLE Mixtape(
-    MixtapeID INT PRIMARY KEY,
-    TrackID INT FOREIGN KEY,
-  	Mixtape_name VARCHAR(255),
-  	Release_year VARCHAR(255),
-  	Track_name VARCHAR(255)
+    MixtapeID SERIAL PRIMARY KEY,
+    TrackID SERIAL,
+  	Mixtape_name VARCHAR(50) NOT NULL,
+  	Release_year DATE NOT NULL,
+  	Track_name VARCHAR(50) NOT NULL
+  	CONSTRAINT fk_mixtape FOREIGN KEY (TrackID) REFERENCES Track(TrackID)
+)
+
+CREATE TABLE Genre_Artist(
+    GenreID INT REFERENCES Genre,
+    ArtistID INT REFERENCES Artist,
+  	PRIMARY KEY (GenreID, ArtistID)
+)
+
+CREATE TABLE Album_Artist(
+    AlbumID INT REFERENCES Album,
+    ArtistID INT REFERENCES Artist,
+  	PRIMARY KEY (AlbumID, ArtistID)
 )
