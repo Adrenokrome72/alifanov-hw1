@@ -1,48 +1,66 @@
-CREATE TABLE Genre(
-    GenreID SERIAL PRIMARY KEY REFERENCES Artists(GenreID),
-    TrackID SERIAL,
-  	Genre_name VARCHAR(50) NOT NULL
-)
+--музыкальные жанры
+CREATE TABLE Genre (
+	GenreID SERIAL PRIMARY KEY,
+	Genre_name VARCHAR(50) NOT NULL
+);
 
-CREATE TABLE Artist(
-    ArtistID SERIAL PRIMARY KEY,
-    GenreID SERIAL,
-  	Artist_name VARCHAR(50) NOT NULL,
-  	Artist_genre VARCHAR(50) NOT NULL
-)
+--исполнители
+CREATE TABLE Artist (
+	ArtistID SERIAL PRIMARY KEY,
+  	GenreID INT REFERENCES 
+	Artist_name VARCHAR(50) NOT NULL
+);
 
-CREATE TABLE Album(
-    AlbumID SERIAL PRIMARY KEY,
-    ArtistID SERIAL,
-  	Album_name VARCHAR(50) NOT NULL,
-  	Release_year DATE NOT NULL
-)
+--в каких музыкальных жанрах выступают исполнители 
+CREATE TABLE artist_genre (
+	artist_id INTEGER REFERENCES artist(id),
+	genre_id INTEGER REFERENCES genre(id),
+	CONSTRAINT artist_genre_pk PRIMARY KEY (
+		artist_id,
+		genre_id
+	)
+);
 
-CREATE TABLE Track(
-    TrackID SERIAL PRIMARY KEY,
-    AlbumID SERIAL,
-  	Track_name VARCHAR(50) NOT NULL,
-  	Track_time NUMERIC(10, 10) NOT NULL,
-  	Track_album VARCHAR(50) NOT NULL
-)
+--музыкальные альбомы
+CREATE TABLE album (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	album_year NUMERIC(4)
+);
 
-CREATE TABLE Mixtape(
-    MixtapeID SERIAL PRIMARY KEY,
-    TrackID SERIAL,
-  	Mixtape_name VARCHAR(50) NOT NULL,
-  	Release_year DATE NOT NULL,
-  	Track_name VARCHAR(50) NOT NULL
-  	CONSTRAINT fk_mixtape FOREIGN KEY (TrackID) REFERENCES Track(TrackID)
-)
+--исполнители-авторы альбомов
+CREATE TABLE album_artist (
+	artist_id INTEGER REFERENCES artist(id),
+	album_id INTEGER REFERENCES album(id),
+	CONSTRAINT album_artist_pk PRIMARY KEY (
+		artist_id,
+		album_id
+	)
+);
 
-CREATE TABLE Genre_Artist(
-    GenreID INT REFERENCES Genre,
-    ArtistID INT REFERENCES Artist,
-  	PRIMARY KEY (GenreID, ArtistID)
-)
+--треки
+CREATE TABLE track (
+	id SERIAL PRIMARY KEY,
+	album_id INTEGER REFERENCES album(id) NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	duration SMALLINT CONSTRAINT positive_duration CHECK (
+		duration > 0
+	)
+);
 
-CREATE TABLE Album_Artist(
-    AlbumID INT REFERENCES Album,
-    ArtistID INT REFERENCES Artist,
-  	PRIMARY KEY (AlbumID, ArtistID)
-)
+--сборники
+CREATE TABLE collection (
+	id SERIAL PRIMARY KEY,
+	name varchar(255) NOT NULL,
+	collection_year NUMERIC(4)
+);
+
+--треки сборников
+CREATE TABLE collection_track (
+	collection_id INTEGER REFERENCES collection(id),
+	track_id INTEGER REFERENCES track(id),
+	CONSTRAINT collection_track_pk PRIMARY KEY (
+		collection_id,
+		track_id
+	)
+);
