@@ -24,11 +24,11 @@ INSERT INTO artist_genre VALUES (3, 4);
 INSERT INTO artist_genre VALUES (4, 2);
 
 --альбомы
-INSERT INTO album(album_name, release_year) VALUES ('В руках великана', 2019);
-INSERT INTO album(album_name, release_year) VALUES ('Всё это и есть любовь', 2014);
-INSERT INTO album(album_name, release_year) VALUES ('Седьмое небо', 2021);
-INSERT INTO album(album_name, release_year) VALUES ('Humanity: Hour I', 2007);
-INSERT INTO album(album_name, release_year) VALUES ('Совместный альбом', 2020);
+INSERT INTO album(album_name, reelease_year) VALUES ('В руках великана', 2019);
+INSERT INTO album(album_name, reelease_year) VALUES ('Всё это и есть любовь', 2014);
+INSERT INTO album(album_name, reelease_year) VALUES ('Седьмое небо', 2021);
+INSERT INTO album(album_name, reelease_year) VALUES ('Humanity: Hour I', 2007);
+INSERT INTO album(album_name, reelease_year) VALUES ('Совместный альбом', 2020);
 
 --связка альбом-исполнитель
 INSERT INTO album_artist VALUES (1,1);
@@ -40,24 +40,24 @@ INSERT INTO album_artist VALUES (3,5);
 
 --треки
 --треки альбома 'В руках великана'
-INSERT INTO track(track_name, duration, album_id) VALUES ('Счастливчик', 256, 1);
-INSERT INTO track(track_name, duration, album_id) VALUES ('В руках великана', 269, 1);
-INSERT INTO track(track_name, duration, album_id) VALUES ('Grand finale', 71, 1);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Счастливчик', 256, 1);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('В руках великана', 269, 1);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Grand finale', 71, 1);
 --треки альбома 'Всё это и есть любовь'
-INSERT INTO track(track_name, duration, album_id) VALUES ('Всё это и есть любовь', 217, 2);
-INSERT INTO track(track_name, duration, album_id) VALUES ('Серенада', 239, 2);
-INSERT INTO track(track_name, duration, album_id) VALUES ('Лети', 205, 2);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Всё это и есть любовь', 217, 2);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Серенада', 239, 2);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Лети', 205, 2);
 --треки альбома 'Седьмое небо'
-INSERT INTO track(track_name, duration, album_id) VALUES ('В твоём городе осень', 266, 3);
-INSERT INTO track(track_name, duration, album_id) VALUES ('Mon Amour', 174, 3);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('В твоём городе осень', 266, 3);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Mon Amour', 174, 3);
 --треки альбома 'Humanity: Hour I'
-INSERT INTO track(track_name, duration, album_id) VALUES ('The Game of Life', 244, 4);
-INSERT INTO track(track_name, duration, album_id) VALUES ('We Were Born to Fly', 239, 4);
-INSERT INTO track(track_name, duration, album_id) VALUES ('Humanity', 326, 4);
-INSERT INTO track(track_name, duration, album_id) VALUES ('When You Came into My Life', 284, 4);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('The Game of Life', 244, 4);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('We Were Born to Fly', 239, 4);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Humanity', 326, 4);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('When You Came into My Life', 284, 4);
 --треки альбома 'Совместный альбом'
-INSERT INTO track(track_name, duration, album_id) VALUES ('Иероглиф (кавер)', 287, 5);
-INSERT INTO track(track_name, duration, album_id) VALUES ('Вниз по течению (кавер)', 315, 5);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Иероглиф (кавер)', 287, 5);
+INSERT INTO track(track_name, track_time, albumid) VALUES ('Вниз по течению (кавер)', 315, 5);
 
 
 --сборники
